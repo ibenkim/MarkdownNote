@@ -18,6 +18,11 @@ public class NoteController {
         return notes.values();
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "Welcome to MarkdownNote!";
+    }
+
     @GetMapping("/{id}")
     public Note getNoteById(@PathVariable Long id) {
         return notes.get(id);
