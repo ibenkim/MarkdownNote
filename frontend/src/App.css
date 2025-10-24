@@ -1,1 +1,57 @@
+.App {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 2rem;
+  background: linear-gradient(135deg, #fdf6e3 0%, #ffe6fa 100%);
+  min-height: 100vh;
+}
+
+.fancy-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #a4508b;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 1px #fff, 2px 2px 5px #ffb6b9;
+}
+
+.editor-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.markdown-editor {
+  flex: 1;
+  height: 70vh;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 2px solid #a0b8ff;
+  box-shadow: 0 2px 8px #8884  ;
+  background: #fafafc;
+  resize: none;
+  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+}
+
+.markdown-preview {
+  flex: 1;
+  height: 70vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #8884;
+  padding: 1rem;
+  background: #fff7fb;
+  border: 2px solid #fda085;
+}
+
+@media (max-width: 900px) {
+  .editor-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .markdown-editor, .markdown-preview {
+    height: 35vh;
+  }
+}
 
