@@ -1,88 +1,69 @@
-.App {
-  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
-  margin: 2rem auto;
-  max-width: 960px;
-  background-color: #000;
-  color: #eee;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 0 10px #111;
-  user-select: text;
-}
-
-.fancy-title {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 2.5rem;
-  color: #67e8f9;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 8px #1e293b;
-  font-weight: 700;
-}
-
-.editor-container {
+.hamburger-menu {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 34px;
+  height: 34px;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   justify-content: space-between;
-  height: 60vh;
-  overflow: hidden;
+  z-index: 1000;
+  cursor: pointer;
 }
 
-.markdown-editor {
-  flex: 1;
-  height: 100%;
-  padding: 1rem;
-  font-size: 1rem;
+.hamburger-menu div {
+  height: 5px;
+  background: #67e8f9;
+  border-radius: 2px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
   border-radius: 6px;
+  box-shadow: 0 2px 10px #0007;
+  padding: .5rem 1rem;
+}
+.dropdown button {
+  background: none;
   border: none;
-  background-color: #111;
+  padding: 0.5rem 0;
   color: #67e8f9;
-  resize: none;
-  font-family: 'Fira Mono', monospace;
-  outline: none;
-  overflow: hidden;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
 }
 
-.markdown-preview {
-  flex: 1;
-  height: 100%;
-  padding: 1rem;
-  background-color: #1a1a1a;
-  border-radius: 6px;
-  color: #cbd5e1;
-  overflow: hidden;
-  white-space: pre-wrap;
+.guide-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
-
-.markdown-guide {
-  background: #111;
+.guide-content {
+  background: #181923;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 95vw;
+  max-width: 480px;
+  box-shadow: 0 8px 30px #000b;
   color: #eee;
-  border: 1px solid #222;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  position: relative;
 }
-
-.markdown-guide dt {
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
   color: #67e8f9;
-  font-weight: bold;
-}
-
-.markdown-guide dd {
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 700px) {
-  .editor-container {
-    flex-direction: column;
-    height: auto;
-  }
-  .markdown-editor,
-  .markdown-preview {
-    height: 30vh;
-    overflow: auto;
-  }
+  font-size: 2rem;
+  cursor: pointer;
 }
