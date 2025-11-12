@@ -2,46 +2,63 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './App.css';
 
-function App() {
-  const [markdown, setMarkdown] = useState('# Welcome to MarkdownNote!\nStart typing here...');
-
+// Guide content as its own component
+function MarkdownGuide({ onClose }) {
   return (
-    <div className="App">
-      <h1 className="fancy-title">MarkdownNote</h1>
-      <section className="markdown-guide">
+    <div className="guide-modal">
+      <div className="guide-content">
+        <button className="close-btn" onClick={onClose}>&times;</button>
         <h2 style={{ color: '#67e8f9', marginBottom: '1rem' }}>📚 Markdown Cheat Sheet</h2>
         <dl>
           <dt># Header 1</dt>
-          <dd>Creates large header text (use more # for smaller headers: ##, ###, etc)</dd>
-
+          <dd>Creates a large header (##, ### for smaller headers)</dd>
           <dt>**bold text**</dt>
-          <dd>Makes text bold</dd>
-
+          <dd>Bold</dd>
           <dt>*italic text*</dt>
-          <dd>Makes text italic</dd>
-
+          <dd>Italic</dd>
           <dt>[Link](https://example.com)</dt>
-          <dd>Creates a clickable hyperlink</dd>
-
-          <dt>- Item or * Item or + Item</dt>
-          <dd>Creates bulleted list items</dd>
-
+          <dd>Link</dd>
+          <dt>- List / * List / + List</dt>
+          <dd>Bulleted list</dd>
           <dt>1. First<br />2. Second</dt>
-          <dd>Creates numbered list</dd>
-
+          <dd>Numbered list</dd>
           <dt>`code`</dt>
-          <dd>Displays inline code</dd>
-
-          <dt>``````</dt>
-          <dd>Creates multi-line code block</dd>
-
+          <dd>Inline code</dd>
+          <dt>{'``````'}</dt>
+          <dd>Multi-line code block</dd>
           <dt>![Alt Text](url)</dt>
-          <dd>Displays image</dd>
-
+          <dd>Image</dd>
           <dt>&gt; Blockquote</dt>
-          <dd>Shows quoted text</dd>
+          <dd>Quote</dd>
         </dl>
-      </section>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [markdown, setMarkdown] = useState('# Welcome to MarkdownNote!\nStart typing here...');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
+
+  return (
+    <div className="App">
+      {/* Top right hamburger menu */}
+      <div className="hamburger-menu" onClick={() => setMenuOpen((prev) => !prev)}>
+        <div></div>
+        <div></div>
+        <div></div>
+        {menuOpen && (
+          <div className="dropdown">
+            <button onClick={() => { setShowGuide(true); setMenuOpen(false); }}>Guide</button>
+          </div>
+        )}
+      </div>
+      <h1 className="fancy-title">MarkdownNote</h1>
+
+      {/* Guide modal */}
+      {showGuide && <MarkdownGuide onClose={() => setShowGuide(false)} />}
+
       <div className="editor-container">
         <textarea
           className="markdown-editor"
