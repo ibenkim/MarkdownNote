@@ -66,4 +66,12 @@ function App() {
           value={markdown}
           onChange={(e) => setMarkdown(e.target.value)}
         />
-        <div className
+        <div className="markdown-preview">
+          <ReactMarkdown>{markdown}</ReactMarkdown>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
